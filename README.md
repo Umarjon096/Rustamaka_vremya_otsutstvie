@@ -6,6 +6,7 @@ Python version 3.12
 
 Пример файла для обработки:
 
-![image](https://github.com/user-attachments/assets/455f03dd-255e-4dac-beef-e654d3edda21)
+![image](https://github.com/user-attachments/assets/19933da4-faf5-45e5-9b49-aa016cf19002)
+
 
 
