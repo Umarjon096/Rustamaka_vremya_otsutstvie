@@ -20,7 +20,6 @@ def browse_input_file():
     if file_selected:
         Entry_id1.delete(0, 'end')
         Entry_id1.insert(0, file_selected.name)
-        print(file_selected.name)
 
 # Функция выбора папки для Entry_id6
 def browse_output_folder():
@@ -50,6 +49,13 @@ def toggle_checkbox_in_file():
         Checkbox_id8.configure(state="normal")
 
 
+def on_validate_input(p):
+    # Проверяем, является ли введённое значение целым числом
+    if p == "" or p.isdigit() and int(p)<24:
+        return True
+    return False
+
+validate_input = window.register(on_validate_input)
 
 
 def start():
@@ -111,8 +117,6 @@ def start():
     # Открыть проводник и выделить файл
     if exlporer: subprocess.run(f'explorer /select,"{output_path.replace('/', '\\')}"')
     if xlsx: os.startfile(output_path)
-
-
 
 Entry_id1 = customtkinter.CTkEntry(
     master=window,
@@ -218,7 +222,6 @@ command=toggle_checkbox,
     )
 Checkbox_id8.place(x=300, y=100)
 
-
 Checkbox_in_file = customtkinter.CTkCheckBox(
     master=window,
     text="Kirish fayliga list holida",
@@ -232,10 +235,6 @@ command=toggle_checkbox_in_file,
     )
 Checkbox_in_file.place(x=470, y=100)
 
-
-
-
-
 Label_enter_ip = customtkinter.CTkLabel(
     master=window,
     text="Kirish turniketlarini IP adreslarini yozing:",
@@ -248,7 +247,6 @@ Label_enter_ip = customtkinter.CTkLabel(
     fg_color="#a2a7b3",
     )
 Label_enter_ip.place(x=10, y=190)
-
 Entry_enter_ips = customtkinter.CTkEntry(
     master=window,
     placeholder_text="kirish ip lari (10.10.10.10, 10.10.10.20)",
@@ -265,7 +263,6 @@ Entry_enter_ips = customtkinter.CTkEntry(
     )
 Entry_enter_ips.place(x=10, y=220)
 Entry_enter_ips.insert(0, '10.100.6.65, 10.100.6.79')
-
 Label_exit_ip = customtkinter.CTkLabel(
     master=window,
     text="Chiqish turniketlarini IP adreslarini yozing:",
@@ -277,7 +274,6 @@ Label_exit_ip = customtkinter.CTkLabel(
     bg_color="#a2a7b3",
     fg_color="#a2a7b3",
     )
-
 Label_exit_ip.place(x=10, y=260)
 Entry_exit_ips = customtkinter.CTkEntry(
     master=window,
@@ -296,16 +292,6 @@ Entry_exit_ips = customtkinter.CTkEntry(
 Entry_exit_ips.place(x=10, y=290)
 Entry_exit_ips.insert(0,'10.100.6.25, 10.100.6.38')
 
-def on_validate_input(p):
-    # Проверяем, является ли введённое значение целым числом
-    if p == "" or p.isdigit() and int(p)<24:
-        return True
-    return False
-
-
-validate_input = window.register(on_validate_input)
-
-
 customtkinter.CTkLabel(
     master=window,
     text="Ish vaqti boshlanishi",
@@ -317,8 +303,6 @@ customtkinter.CTkLabel(
     bg_color="#a2a7b3",
     fg_color="#a2a7b3",
     ).place(x=10, y=330)
-
-
 
 # Создаем поле ввода для начала времени
 start_hour = customtkinter.CTkEntry(
@@ -366,9 +350,6 @@ end_hour = customtkinter.CTkEntry(
 end_hour.place(x=300, y=330)
 end_hour.insert(0, 18)
 
-
-
-
 customtkinter.CTkLabel(
     master=window,
     text="Abet vaqti boshlanishi",
@@ -380,7 +361,6 @@ customtkinter.CTkLabel(
     bg_color="#a2a7b3",
     fg_color="#a2a7b3",
     ).place(x=10, y=370)
-
 
 # Создаем поле ввода для начала времени
 start_lunch_hour = customtkinter.CTkEntry(
@@ -398,7 +378,6 @@ start_lunch_hour = customtkinter.CTkEntry(
 start_lunch_hour.place(x=160, y=370)
 start_lunch_hour.insert(0, 12)
 
-
 customtkinter.CTkLabel(
     master=window,
     text="tugashi",
@@ -410,7 +389,6 @@ customtkinter.CTkLabel(
     bg_color="#a2a7b3",
     fg_color="#a2a7b3",
     ).place(x=230, y=370)
-
 
 # Создаем поле ввода для конца времени
 end_lunch_hour = customtkinter.CTkEntry(
@@ -428,14 +406,6 @@ end_lunch_hour = customtkinter.CTkEntry(
 end_lunch_hour.place(x=300, y=370)
 end_lunch_hour.insert(0, 14)
 
-
-
-
-
-
-
-
-
 Checkbox_explorer = customtkinter.CTkCheckBox(
     master=window,
     text="Faylni provodnikda ko'rsatish",
@@ -448,9 +418,6 @@ Checkbox_explorer = customtkinter.CTkCheckBox(
     )
 Checkbox_explorer.place(x=110, y=430)
 
-
-
-
 Checkbox_xlsx = customtkinter.CTkCheckBox(
     master=window,
     text="Faylni ochish (Excel)",
@@ -462,7 +429,6 @@ Checkbox_xlsx = customtkinter.CTkCheckBox(
     border_width=2,
     )
 Checkbox_xlsx.place(x=310, y=430)
-
 
 Entry_id6 = customtkinter.CTkEntry(
     master=window,
