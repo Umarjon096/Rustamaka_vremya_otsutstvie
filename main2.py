@@ -249,7 +249,6 @@ def working_time(file_path, output_path, same_file,
     # Для отладки/просмотра в консоли
     pd.set_option('display.max_rows', None)
     pd.set_option('display.width', None)
-    print(final)
 
     # =========================
     # 14. Сохранение результата с шириной столбцов и границами
