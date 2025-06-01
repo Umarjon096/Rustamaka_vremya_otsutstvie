@@ -1,4 +1,4 @@
-# Rustamaka_vremya_otsutstvie
+# SKUD_vremya_otsutstvie
 
 Python version 3.12
 
